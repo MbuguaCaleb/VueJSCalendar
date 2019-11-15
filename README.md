@@ -77,7 +77,9 @@ Methods ->a call for custom vue js methods.
 
 
 ```
+
 # Abstarcted Concepts
+
 ```
 Extracting data from the prototype object and pushing it into the events array..
 then to the state
@@ -92,4 +94,12 @@ Aync JS{
 
   (B)Promises
 }
+
+Vue Js methods may also be passed to the component as well.
+
+
+We can have a computed method in vueJS..
+Eg the title method in the VueJS Calendar.
+
+The calendar is all about passing methods to it!!
 ```
