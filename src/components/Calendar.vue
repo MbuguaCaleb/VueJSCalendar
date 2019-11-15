@@ -3,9 +3,7 @@
     <v-col>
       <v-sheet height="64">
         <v-toolbar flat color="white">
-          <v-btn outlined class="mr-4" @click="setToday">
-            Today
-          </v-btn>
+          <v-btn outlined class="mr-4" @click="setToday">Today</v-btn>
           <v-btn fab text small @click="prev">
             <v-icon small>mdi-chevron-left</v-icon>
           </v-btn>
@@ -78,9 +76,9 @@
               <span v-html="selectedEvent.details"></span>
             </v-card-text>
             <v-card-actions>
-              <v-btn text color="secondary" @click="selectedOpen = false">
-                Cancel
-              </v-btn>
+              <v-btn text color="secondary" @click="selectedOpen = false"
+                >Cancel</v-btn
+              >
             </v-card-actions>
           </v-card>
         </v-menu>
@@ -89,6 +87,7 @@
   </v-row>
 </template>
 <script>
+import { db } from "../main";
 export default {
   data: () => ({
     today: new Date().toISOString().substring(0, 10),
@@ -104,8 +103,34 @@ export default {
     name: null,
     details: null,
     start: null,
-    end:null,
-    color: "#1976d2"
-  })
+    end: null,
+    color: "#1976d2",
+    currentlyEditing: null,
+    selectedEvent: {},
+    selectedElement: null,
+    selectedOpen: false,
+    events: [],
+    dialogue: false
+  }),
+
+  mounted() {
+    this.getEvents();
+  },
+  methods: {
+    async getEvents() {
+      let snapshot = await db.collection("calEvent").get();
+      let events = [];
+      snapshot.forEach(doc => {
+        let appData = doc.data();
+        appData.id = doc.id;
+        events.push(appData);
+      });
+
+      this.events = events;
+    },
+    getEventColor(ev) {
+      return ev.color;
+    }
+  }
 };
 </script>

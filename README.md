@@ -63,3 +63,33 @@ Event listeners call unto methods
 Passing props to componets is one of the important things
 
 ```
+
+# Vue Calendar
+
+```
+The vue calendar takes in props for events as well as data from firebase.
+
+As well as methods within the vuetify calendar which are being created.
+
+Mounted life cycle method is called when the component is mounted.It is called when an event is loaded thus calling other methods.
+
+Methods ->a call for custom vue js methods.
+
+
+```
+# Abstarcted Concepts
+```
+Extracting data from the prototype object and pushing it into the events array..
+then to the state
+
+Crucial to note where the state is and
+from where it is passed to the component.
+
+
+Aync JS{
+
+  (A)async await
+
+  (B)Promises
+}
+```
